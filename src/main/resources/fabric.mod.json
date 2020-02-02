@@ -1,0 +1,22 @@
+{
+	"schemaVersion": 1,
+	"id": "lootstrap",
+	"version": "${version}",
+	"name": "Lootstrap",
+	"description": "Allows a player to recieve loot when they join the server.",
+	"authors": [
+		"haykam821"
+	],
+	"contact": {
+		"homepage": "https://github.com/haykam821/Lootstrap#readme",
+		"issues": "https://github.com/haykam821/Lootstrap/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/lootstrap/icon.png",
+	"mixins": [
+		"lootstrap.mixin.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.4.0"
+	}
+}
