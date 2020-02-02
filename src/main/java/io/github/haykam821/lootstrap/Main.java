@@ -12,11 +12,18 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 
 public class Main {
-	public static final Identifier SPAWN_LOOT_TABLE = new Identifier("lootstrap", "spawn");
+	// The first join only
+	public static final Identifier FIRST_JOIN_LOOT_TABLE = new Identifier("lootstrap", "first_join");
 
-	public static void giveSpawnLoot(ServerPlayerEntity playerEntity) {
+	// Every join but the first
+	public static final Identifier REJOIN_LOOT_TABLE = new Identifier("lootstrap", "rejoin");
+
+	// Every join
+	public static final Identifier JOIN_LOOT_TABLE = new Identifier("lootstrap", "join");
+
+	public static void giveLoot(ServerPlayerEntity playerEntity, Identifier lootTable) {
 		ServerWorld world = (ServerWorld) playerEntity.world;
-		LootTable table = world.getServer().getLootManager().getSupplier(SPAWN_LOOT_TABLE);
+		LootTable table = world.getServer().getLootManager().getSupplier(lootTable);
 
 		if (table != null) {
 			LootContext.Builder builder = new LootContext.Builder(world);
