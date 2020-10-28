@@ -10,6 +10,7 @@ import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 
 public class Main {
 	// The first join only
@@ -23,17 +24,17 @@ public class Main {
 
 	public static void giveLoot(ServerPlayerEntity playerEntity, Identifier lootTable) {
 		ServerWorld world = (ServerWorld) playerEntity.world;
-		LootTable table = world.getServer().getLootManager().getSupplier(lootTable);
+		LootTable table = world.getServer().getLootManager().getTable(lootTable);
 
 		if (table != null) {
 			LootContext.Builder builder = new LootContext.Builder(world);
 
-			builder.setRandom(world.getRandom());
-			builder.put(LootContextParameters.POSITION, playerEntity.getBlockPos());
-			builder.put(LootContextParameters.THIS_ENTITY, playerEntity);
+			builder.random(world.getRandom());
+			builder.parameter(LootContextParameters.ORIGIN, Vec3d.of(playerEntity.getBlockPos()));
+			builder.parameter(LootContextParameters.THIS_ENTITY, playerEntity);
 
 			LootContext context = builder.build(LootContextTypes.GIFT);
-			List<ItemStack> stacks = table.getDrops(context);
+			List<ItemStack> stacks = table.generateLoot(context);
 			stacks.forEach(playerEntity::giveItemStack);
 		}
 	}

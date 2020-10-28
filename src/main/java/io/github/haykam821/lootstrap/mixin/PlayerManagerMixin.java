@@ -9,7 +9,6 @@ import io.github.haykam821.lootstrap.Main;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.stat.Stat;
 import net.minecraft.stat.Stats;
 
 @Mixin(PlayerManager.class)
