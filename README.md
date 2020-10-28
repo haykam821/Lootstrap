@@ -20,3 +20,4 @@ In a datapack, override the following loot tables:
 * `lootstrap:first_join` - Gives the loot table to a player when they first join a server.
 * `lootstrap:rejoin` - Gives the loot table to a player when they join a server after the first time.
 * `lootstrap:join` - Gives the loot table to a player when they join a server, no matter which time.
+* `lootstrap:join_index_<n>` - Gives the loot table when they join for the `n`th time.
