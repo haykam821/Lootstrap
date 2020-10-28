@@ -32,7 +32,7 @@ public class Main {
 			LootContext.Builder builder = new LootContext.Builder(world);
 
 			builder.random(world.getRandom());
-			builder.parameter(LootContextParameters.ORIGIN, Vec3d.of(player.getBlockPos()));
+			builder.parameter(LootContextParameters.ORIGIN, player.getPos());
 			builder.parameter(LootContextParameters.THIS_ENTITY, player);
 
 			LootContext context = builder.build(LootContextTypes.GIFT);
